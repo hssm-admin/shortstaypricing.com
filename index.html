@@ -18,6 +18,18 @@
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#1C3563">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1655030189310112');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1655030189310112&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -432,7 +444,7 @@ footer .wrap { display: grid; gap: 8px; }
   <div class="wrap">
     <p>Short Stay Pricing is a business of John Lennard, ABN 33 643 117 077, from the team behind Hobart Short Stay Management.</p>
     <p>hello@shortstaypricing.com</p>
-    <p>We use your details only to answer you. Results vary, and we don't guarantee any level of revenue.</p>
+    <p>We use your details only to answer you and to measure our ads (<a href="privacy.html">privacy</a>). Results vary, and we don't guarantee any level of revenue.</p>
   </div>
 </footer>
 
@@ -480,6 +492,9 @@ function revparCheck(input) {
   document.getElementById("calc-form").addEventListener("submit", function (e) { e.preventDefault(); });
   render();
 
+  document.getElementById("signup-btn").addEventListener("click", function () {
+    if (window.fbq) fbq("track", "InitiateCheckout", { content_name: "Sign up" });
+  });
   // Free check requests go to Make (scenario 6862301), which drops an alert into hello@ with the Pricing label.
   var HOOK = "https://hook.us2.make.com/9w8sb78rd6qgn3udy1t671rzxvl8119o";
   var params = new URLSearchParams(location.search);
@@ -501,7 +516,7 @@ function revparCheck(input) {
     btn.disabled = true;
     msg.textContent = "Sending...";
     fetch(HOOK, { method: "POST", mode: "no-cors", body: body })
-      .then(function () { form.reset(); msg.textContent = "Thanks. We'll email your free check within two business days."; })
+      .then(function () { form.reset(); msg.textContent = "Thanks. We'll email your free check within two business days."; if (window.fbq) fbq("track", "Lead", { content_name: "Free RevPAR check" }); })
       .catch(function () { msg.textContent = "That didn't send. Email your listing link to hello@shortstaypricing.com and we'll do your check."; })
       .then(function () { btn.disabled = false; });
   });
