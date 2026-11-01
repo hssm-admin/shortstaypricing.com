@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Short Stay Pricing | Nightly rates for short-stay hosts</title>
+<meta name="description" content="Nightly rates for your short stay, set by the team that runs 120+ homes. 5% of rental revenue plus GST, no lock-in.">
+<link rel="canonical" href="https://shortstaypricing.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shortstaypricing.com/">
+<meta property="og:title" content="Short Stay Pricing">
+<meta property="og:description" content="Nightly rates for your short stay, set by the team that runs 120+ homes. 5% of rental revenue plus GST, no lock-in.">
+<meta property="og:image" content="https://shortstaypricing.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1C3563">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a pricing desk. Headline left, a live rate calendar right; quiet single column below, one navy band for the RevPAR check. */
+  --navy: #1C3563;
+  --navy-deep: #13132A;
+  --gold: #D7AD66;
+  --gold-ink: #85601F;
+  --paper: #F4F6FA;
+  --surface: #FFFFFF;
+  --ink: #141B2D;
+  --muted: #56607A;
+  --line: #DCE2EC;
+  --display: "Jost", "Avenir Next", "Century Gothic", sans-serif;
+  --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --radius: 10px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+a { color: var(--navy); }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); color: var(--navy); text-wrap: balance; margin: 0; }
+h1 { font-weight: 300; font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.08; letter-spacing: -0.01em; }
+h2 { font-weight: 300; font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; }
+h3 { font-weight: 600; font-size: 1.05rem; }
+p { margin: 0; }
+.wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+.narrow { max-width: 65ch; }
+.kicker { font-family: var(--display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-ink); }
+.tnum { font-variant-numeric: tabular-nums; }
+
+
+/* Header */
+header.site { background: var(--surface); border-bottom: 1px solid var(--line); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 0; flex-wrap: wrap; }
+.mark { display: flex; flex-direction: column; text-decoration: none; line-height: 1; }
+.mark .name { font-family: var(--display); font-weight: 500; font-size: 1.35rem; color: var(--navy); letter-spacing: 0.01em; }
+.mark .name b { font-weight: 600; color: var(--gold-ink); letter-spacing: 0.2em; font-size: 0.82em; text-transform: uppercase; margin-left: 4px; }
+.mark .from { font-size: 0.74rem; color: var(--muted); margin-top: 6px; }
+nav.top { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+nav.top a { text-decoration: none; color: var(--ink); font-weight: 500; font-size: 0.95rem; }
+nav.top a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--body); font-weight: 600; font-size: 1rem; border-radius: 999px; padding: 12px 22px; border: 1.5px solid var(--navy); text-decoration: none; cursor: pointer; transition: background .15s, color .15s; }
+.btn.primary { background: var(--navy); color: #fff; }
+.btn.primary:hover { background: var(--navy-deep); }
+.btn.ghost { background: transparent; color: var(--navy); }
+.btn.ghost:hover { background: var(--surface); }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: var(--navy-deep); }
+.btn.gold:hover { background: #E4BE71; }
+nav.top .btn { padding: 9px 18px; font-size: 0.92rem; }
+
+/* Hero */
+.hero { padding: 64px 0 56px; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero .lede { margin-top: 20px; font-size: 1.15rem; color: var(--muted); max-width: 46ch; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.hero .terms { margin-top: 18px; font-size: 0.9rem; color: var(--muted); }
+.hero .terms span + span::before { content: "\00b7"; margin: 0 8px; color: var(--gold-ink); }
+
+/* Rate calendar */
+.cal { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; box-shadow: 0 18px 40px -24px rgba(19,19,42,.35); }
+.cal-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.cal-head h3 { font-family: var(--display); font-weight: 500; font-size: 1rem; color: var(--navy); }
+.cal-head span { font-size: 0.8rem; color: var(--muted); }
+.grid7 { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.dow { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; padding-bottom: 2px; }
+.night { position: relative; border: 1px solid var(--line); border-radius: 8px; padding: 8px 6px 9px; min-height: 74px; display: flex; flex-direction: column; justify-content: space-between; background: var(--surface); }
+.night .d { font-size: 0.72rem; color: var(--muted); }
+.night .p { font-family: var(--display); font-weight: 500; font-size: 1.12rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.night .tag { font-size: 0.62rem; line-height: 1.2; font-weight: 600; color: var(--gold-ink); }
+.night.event { border-top: 3px solid var(--gold); }
+.night.peak { background: var(--navy); border-color: var(--navy); }
+.night.peak .d { color: #C9D2E6; }
+.night.peak .p { color: #fff; }
+.night.peak .tag { color: var(--gold); }
+.night.gap { border: 1.5px dashed var(--navy); }
+.night.gap .tag { color: var(--navy); }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
+.legend i { display: inline-block; width: 18px; height: 10px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+.legend .l-event { border-top: 3px solid var(--gold); background: var(--surface); outline: 1px solid var(--line); }
+.legend .l-peak { background: var(--navy); }
+.legend .l-gap { border: 1.5px dashed var(--navy); }
+.cal-note { margin-top: 8px; font-size: 0.72rem; color: var(--muted); }
+
+/* Proof */
+.proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+.proof .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 26px 0; }
+.proof .item b { display: block; font-family: var(--display); font-weight: 500; font-size: 1.5rem; color: var(--navy); }
+.proof .item span { font-size: 0.92rem; color: var(--muted); }
+
+/* Sections */
+section.block { padding: 72px 0; }
+.section-head { display: grid; gap: 10px; margin-bottom: 32px; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: step; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.step .n { font-family: var(--display); font-weight: 300; font-size: 2.2rem; color: var(--gold-ink); line-height: 1; }
+.step h3 { margin: 12px 0 8px; color: var(--navy); }
+.step p { font-size: 0.95rem; color: var(--muted); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+.panel h3 { font-family: var(--display); font-weight: 500; font-size: 1.2rem; margin-bottom: 12px; }
+ul.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+ul.ticks li { padding-left: 26px; position: relative; }
+ul.ticks li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 12px; height: 7px; border-left: 2px solid var(--gold-ink); border-bottom: 2px solid var(--gold-ink); transform: rotate(-45deg); }
+ul.yours li::before { border-color: var(--navy); }
+
+/* Price */
+.price { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: start; }
+.big { font-family: var(--display); font-weight: 300; font-size: clamp(4.5rem, 10vw, 7rem); line-height: 0.9; color: var(--navy); }
+.big small { display: block; font-size: 1rem; font-weight: 500; color: var(--muted); margin-top: 12px; letter-spacing: 0; }
+.fine { font-size: 0.88rem; color: var(--muted); margin-top: 16px; }
+
+/* RevPAR check */
+.check { background: linear-gradient(135deg, #22427A 0%, var(--navy) 45%, var(--navy-deep) 100%); color: #EEF1F8; }
+.check h2, .check h3 { color: #fff; }
+.check .kicker { color: var(--gold); }
+.check .lede { color: #C9D2E6; margin-top: 10px; }
+.calc { display: grid; grid-template-columns: 1fr 1.15fr; gap: 28px; margin-top: 32px; }
+.calc .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 22px; }
+.field { display: grid; gap: 6px; margin-bottom: 16px; }
+.field label { font-size: 0.9rem; color: #DDE3F0; }
+.field input[type="number"], .field input[type="url"], .field input[type="email"] { font: inherit; font-size: 1.05rem; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(9,12,28,0.35); color: #fff; width: 100%; font-variant-numeric: tabular-nums; }
+.field .hint { font-size: 0.78rem; color: #AEB9D1; }
+.err { color: #FFD7A1; font-size: 0.85rem; min-height: 1.2em; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stat { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 14px; }
+.stat span { display: block; font-size: 0.78rem; color: #C9D2E6; }
+.stat b { font-family: var(--display); font-weight: 500; font-size: 1.5rem; color: #fff; font-variant-numeric: tabular-nums; }
+.stat.key { background: var(--gold); }
+.stat.key span { color: var(--navy-deep); }
+.stat.key b { color: var(--navy-deep); }
+.lift { margin-top: 20px; }
+.lift label { display: flex; justify-content: space-between; font-size: 0.92rem; color: #DDE3F0; }
+.lift input[type="range"] { width: 100%; accent-color: var(--gold); margin-top: 8px; }
+table.sums { width: 100%; border-collapse: collapse; margin-top: 14px; font-variant-numeric: tabular-nums; }
+table.sums td { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+table.sums td:last-child { text-align: right; font-weight: 600; }
+table.sums tr.total td { border-bottom: none; font-size: 1.15rem; color: var(--gold); }
+.note { font-size: 0.8rem; color: #AEB9D1; margin-top: 12px; }
+.free { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; }
+.free .field { margin-bottom: 0; }
+.formmsg { margin-top: 10px; font-size: 0.9rem; color: var(--gold); min-height: 1.3em; }
+
+/* FAQ */
+.faq { display: grid; gap: 10px; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 18px; }
+summary { cursor: pointer; padding: 16px 0; font-weight: 600; color: var(--navy); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--display); font-size: 1.3rem; line-height: 1; color: var(--gold-ink); }
+details[open] summary::after { content: "\2212"; }
+details p { padding: 0 0 18px; color: var(--muted); max-width: 70ch; }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* Sign up */
+.signup { background: var(--surface); border-top: 1px solid var(--line); }
+.signup .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; padding: 56px 0; }
+.signup p { color: var(--muted); margin-top: 8px; }
+.signup .actions { display: grid; gap: 10px; justify-items: start; }
+
+footer { padding: 32px 0 48px; font-size: 0.85rem; color: var(--muted); }
+footer .wrap { display: grid; gap: 8px; }
+
+@media (max-width: 900px) {
+  .hero .wrap, .price, .calc, .split { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .proof .wrap { grid-template-columns: 1fr; gap: 14px; }
+  .free { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .steps, .stats { grid-template-columns: 1fr; }
+  .night { min-height: 60px; padding: 6px 4px; }
+  .night .p { font-size: 0.92rem; }
+  .night .tag { font-size: 0.56rem; }
+  nav.top { gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="site">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Short Stay Pricing, home">
+      <span class="name">Short Stay<b>Pricing</b></span>
+      <span class="from">from the team behind Hobart Short Stay Management</span>
+    </a>
+    <nav class="top" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#price">Price</a>
+      <a href="#check">RevPAR check</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn primary" href="#signup">Sign up</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Pricing for short-stay hosts</p>
+        <h1 style="margin-top:14px">Your nightly rates, set by people who run 120+ homes.</h1>
+        <p class="lede">We manage the pricing in your own PriceLabs account and keep adjusting it as your market moves. Your guests, your listing and your cleaners stay yours.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#check">Run the free RevPAR check</a>
+          <a class="btn ghost" href="#how">How it works</a>
+        </div>
+        <p class="terms"><span>5% of rental revenue plus GST</span><span>$99 minimum a listing a month</span><span>No lock-in</span></p>
+      </div>
+
+      <figure class="cal" aria-labelledby="cal-title" style="margin:0">
+        <div class="cal-head">
+          <h3 id="cal-title">A fortnight of rates, priced night by night</h3>
+          <span>Example 2-bed, Hobart, peak season</span>
+        </div>
+        <div class="grid7" role="list">
+          <div class="dow" aria-hidden="true">Mon</div><div class="dow" aria-hidden="true">Tue</div><div class="dow" aria-hidden="true">Wed</div><div class="dow" aria-hidden="true">Thu</div><div class="dow" aria-hidden="true">Fri</div><div class="dow" aria-hidden="true">Sat</div><div class="dow" aria-hidden="true">Sun</div>
+          <div class="night event" role="listitem"><span class="d">28 Dec</span><span class="tag">Sydney to Hobart</span><span class="p">$419</span></div>
+          <div class="night event" role="listitem"><span class="d">29 Dec</span><span class="tag">Sydney to Hobart</span><span class="p">$439</span></div>
+          <div class="night" role="listitem"><span class="d">30 Dec</span><span class="p">$459</span></div>
+          <div class="night peak" role="listitem"><span class="d">31 Dec</span><span class="tag">NYE, 3-night min</span><span class="p">$589</span></div>
+          <div class="night" role="listitem"><span class="d">1 Jan</span><span class="p">$469</span></div>
+          <div class="night" role="listitem"><span class="d">2 Jan</span><span class="p">$429</span></div>
+          <div class="night" role="listitem"><span class="d">3 Jan</span><span class="p">$359</span></div>
+          <div class="night" role="listitem"><span class="d">4 Jan</span><span class="p">$319</span></div>
+          <div class="night gap" role="listitem"><span class="d">5 Jan</span><span class="tag">Gap night</span><span class="p">$299</span></div>
+          <div class="night" role="listitem"><span class="d">6 Jan</span><span class="p">$329</span></div>
+          <div class="night" role="listitem"><span class="d">7 Jan</span><span class="p">$339</span></div>
+          <div class="night" role="listitem"><span class="d">8 Jan</span><span class="p">$389</span></div>
+          <div class="night" role="listitem"><span class="d">9 Jan</span><span class="p">$419</span></div>
+          <div class="night" role="listitem"><span class="d">10 Jan</span><span class="p">$349</span></div>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="l-event"></i>Event lift</span>
+          <span><i class="l-peak"></i>Peak night, longer minimum stay</span>
+          <span><i class="l-gap"></i>Gap night priced to fill</span>
+        </div>
+        <figcaption class="cal-note">Illustrative rates, not a real listing.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Who we are">
+    <div class="wrap">
+      <div class="item"><b class="tnum">120+ homes</b><span>priced every day by Hobart Short Stay Management, across Tasmania and Victoria</span></div>
+      <div class="item"><b class="tnum">21,000+ nights</b><span>booked across those homes in the last 12 months</span></div>
+      <div class="item"><b>Top 300</b><span>invited to Airbnb's 2026 event for its top 300 hosts in Australia and New Zealand</span></div>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">How it works</p>
+        <h2>Live in three business days, without a phone call.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>Run the RevPAR check</h3><p>See what you earn per available night, and what a lift would be worth after our fee.</p></div>
+        <div class="step"><div class="n">2</div><h3>Sign online</h3><p>The agreement and your card take about ten minutes. Read every word first; there's no lock-in.</p></div>
+        <div class="step"><div class="n">3</div><h3>Add us in PriceLabs</h3><p>Not on PriceLabs yet? Start their free trial, connect Airbnb or your booking software, then add us as your PriceLabs expert.</p></div>
+        <div class="step"><div class="n">4</div><h3>Go live</h3><p>Within three business days we send your strategy and put it live. Then a one-page report every month.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap split">
+      <div class="panel">
+        <h3>What we look after</h3>
+        <ul class="ticks">
+          <li>Your base price, floor and ceiling</li>
+          <li>Weekends, seasons and local events</li>
+          <li>Last-minute and far-out pricing</li>
+          <li>Minimum stays and gap nights</li>
+          <li>Launch pricing for new listings</li>
+          <li>A one-page report every month: your revenue per available night against your market, and what we changed</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>What stays yours</h3>
+        <ul class="ticks yours">
+          <li>Your PriceLabs account and subscription</li>
+          <li>Your guests, bookings and payouts</li>
+          <li>Your listing and photos (we'll suggest improvements; you decide)</li>
+          <li>Your lowest price for each listing, which we never go below</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="price" style="padding-top:0">
+    <div class="wrap price">
+      <div>
+        <p class="kicker">Price</p>
+        <p class="big tnum">5%<small>of rental revenue, plus GST</small></p>
+      </div>
+      <div class="panel">
+        <ul class="ticks">
+          <li>Minimum $99 plus GST a listing a month</li>
+          <li>No setup fee, no lock-in, 30 days' notice to stop</li>
+          <li>The same rate for one listing or a hundred</li>
+          <li>Billed monthly to the card you save at sign-up, after a statement showing every listing's nights, revenue and fee</li>
+          <li>PriceLabs bills you directly for your subscription, with a free 30-day trial</li>
+        </ul>
+        <p class="fine">Rental revenue means the nightly charges for nights stayed, before platform commissions, excluding cleaning fees and taxes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block check" id="check">
+    <div class="wrap">
+      <p class="kicker">The RevPAR check</p>
+      <h2 style="margin-top:10px">What does a lift in revenue per available night mean for you?</h2>
+      <p class="lede narrow">RevPAR is what your home earns per night it's available, booked or not. It's the fairest single number for pricing. Put in your last 12 months and see what a lift would be worth after our fee.</p>
+
+      <div class="calc">
+        <form class="card" id="calc-form" novalidate>
+          <div class="field">
+            <label for="avail">Nights your home was available in the last 12 months</label>
+            <input type="number" id="avail" min="1" max="366" step="1" value="340" inputmode="numeric">
+            <span class="hint">365 minus the nights you blocked or used yourself</span>
+          </div>
+          <div class="field">
+            <label for="booked">Nights booked</label>
+            <input type="number" id="booked" min="0" max="366" step="1" value="238" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="revenue">Rental revenue for those nights, in dollars</label>
+            <input type="number" id="revenue" min="0" step="100" value="59500" inputmode="numeric">
+            <span class="hint">Nightly charges only, before platform commissions, without cleaning fees</span>
+          </div>
+          <p class="err" id="calc-err" role="alert"></p>
+        </form>
+
+        <div class="card" aria-live="polite">
+          <div class="stats">
+            <div class="stat"><span>Booked</span><b id="o-occ">70%</b></div>
+            <div class="stat"><span>Average nightly rate</span><b id="o-adr">$250</b></div>
+            <div class="stat key"><span>Your RevPAR</span><b id="o-revpar">$175</b></div>
+          </div>
+          <div class="lift">
+            <label for="lift"><span>If better pricing lifted your RevPAR by</span><b id="o-lift" class="tnum">10%</b></label>
+            <input type="range" id="lift" min="0" max="30" step="1" value="10">
+          </div>
+          <table class="sums">
+            <tr><td>Extra revenue in a year</td><td id="o-extra">$5,950</td></tr>
+            <tr><td>Our fee for the year (plus GST)</td><td id="o-fee">$3,273</td></tr>
+            <tr class="total"><td>You'd keep, after our fee</td><td id="o-keep">$2,678</td></tr>
+          </table>
+          <p class="note" id="o-break">You come out ahead once the lift passes about 5.3%.</p>
+          <p class="note">An illustration, not a forecast or a promise. Figures are before GST. Results depend on your market, your listing and your reviews.</p>
+        </div>
+      </div>
+
+      <form class="free" id="free-form">
+        <div class="field">
+          <label for="listing">Your listing link, for a free check against homes like yours</label>
+          <input type="url" id="listing" placeholder="https://www.airbnb.com.au/rooms/..." required>
+        </div>
+        <div class="field">
+          <label for="email">Your email</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+        <button class="btn gold" type="submit">Send me my free check</button>
+      </form>
+      <p class="formmsg" id="free-msg" role="status"></p>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Questions</p>
+        <h2>The things hosts ask first.</h2>
+      </div>
+      <div class="faq narrow" style="max-width:820px">
+        <details><summary>Do I need PriceLabs?</summary><p>Yes. We work inside your own PriceLabs account. If you're not on it yet, start their free 30-day trial and connect Airbnb or your booking software; we'll send you a short step-by-step guide.</p></details>
+        <details><summary>Will you touch my guests or bookings?</summary><p>No. We only manage your pricing. Your guests, bookings, payouts and listing stay with you.</p></details>
+        <details><summary>Can I set a lowest price?</summary><p>Yes. You set a minimum nightly price for each listing and we never go below it. Change it any time by email.</p></details>
+        <details><summary>How do you charge?</summary><p>Once a month, in arrears. You get a statement showing each listing's nights, revenue and fee, then it's charged to the card you saved when you signed up.</p></details>
+        <details><summary>What if I want to stop?</summary><p>Give us 30 days' notice by email. There's no exit fee. We remove our access and leave your settings as they are.</p></details>
+        <details><summary>Do you guarantee results?</summary><p>No. Your market, your listing and your reviews all matter. What we commit to is the work: your pricing reviewed every week, adjusted as your market moves, and reported every month.</p></details>
+        <details><summary>Where do you work?</summary><p>Anywhere in Australia, with more countries to come.</p></details>
+        <details><summary>How is this connected to Hobart Short Stay Management?</summary><p>Same team. Hobart Short Stay Management runs homes for owners from start to finish; Short Stay Pricing does the pricing only, for hosts who run their own. Your details stay with Short Stay Pricing unless you ask to hear about full management.</p></details>
+        <details><summary>Can I talk to someone first?</summary><p>Of course. Email <a href="mailto:hello@shortstaypricing.com">hello@shortstaypricing.com</a> and we'll set up a 15-minute call. Most hosts don't need one, but it's there.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="signup" id="signup">
+    <div class="wrap">
+      <div>
+        <h2>Start in about ten minutes.</h2>
+        <p>Sign the agreement, save your card, then add us in PriceLabs.</p>
+      </div>
+      <div class="actions">
+        <a class="btn primary" id="signup-btn" href="https://form.pandadoc.com/form/khiQpc3MqQ7vZrRA3dFSBP" target="_blank" rel="noopener">Sign up</a>
+        <span style="font-size:0.9rem;color:var(--muted)">Prefer to talk first? Email <a href="mailto:hello@shortstaypricing.com">hello@shortstaypricing.com</a> and we'll set up a quick call.</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Short Stay Pricing is a business of John Lennard, ABN 33 643 117 077, from the team behind Hobart Short Stay Management.</p>
+    <p>hello@shortstaypricing.com</p>
+    <p>We use your details only to answer you. Results vary, and we don't guarantee any level of revenue.</p>
+  </div>
+</footer>
+
+<script>
+// Pure calculation, kept separate so it can be tested on its own.
+function revparCheck(input) {
+  var avail = Number(input.avail), booked = Number(input.booked), revenue = Number(input.revenue), lift = Number(input.lift);
+  if (!(avail >= 1 && avail <= 366)) return { error: "Available nights should be between 1 and 366." };
+  if (!(booked >= 0 && booked <= avail)) return { error: "Nights booked can't be more than nights available." };
+  if (!(revenue >= 0)) return { error: "Revenue should be zero or more." };
+  if (booked > 0 && revenue === 0) return { error: "Add the revenue for the nights you had booked." };
+  var occ = booked / avail;
+  var adr = booked > 0 ? revenue / booked : 0;
+  var revpar = revenue / avail;
+  var newRevenue = revenue * (1 + lift / 100);
+  var extra = newRevenue - revenue;
+  var fee = Math.max(0.05 * newRevenue, 99 * 12);
+  var keep = extra - fee;
+  // Lift needed before the host is ahead: 5% of the new revenue, unless the $99 monthly minimum is the bigger fee.
+  var breakEven = 0.05 / 0.95;
+  if (0.05 * revenue * (1 + breakEven) < 99 * 12) breakEven = revenue > 0 ? (99 * 12) / revenue : null;
+  return { occ: occ, adr: adr, revpar: revpar, extra: extra, fee: fee, keep: keep, breakEven: breakEven };
+}
+
+(function () {
+  var money = new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 });
+  var ids = ["avail", "booked", "revenue", "lift"];
+  var el = {};
+  ["avail", "booked", "revenue", "lift", "calc-err", "o-occ", "o-adr", "o-revpar", "o-lift", "o-extra", "o-fee", "o-keep", "o-break"].forEach(function (id) { el[id] = document.getElementById(id); });
+
+  function render() {
+    var r = revparCheck({ avail: el.avail.value, booked: el.booked.value, revenue: el.revenue.value, lift: el.lift.value });
+    el["o-lift"].textContent = el.lift.value + "%";
+    if (r.error) { el["calc-err"].textContent = r.error; return; }
+    el["calc-err"].textContent = "";
+    el["o-occ"].textContent = Math.round(r.occ * 100) + "%";
+    el["o-adr"].textContent = money.format(r.adr);
+    el["o-revpar"].textContent = money.format(r.revpar);
+    el["o-extra"].textContent = money.format(r.extra);
+    el["o-fee"].textContent = money.format(r.fee);
+    el["o-keep"].textContent = (r.keep < 0 ? "minus " : "") + money.format(Math.abs(r.keep));
+    el["o-break"].textContent = r.breakEven === null ? "Add your revenue to see where you come out ahead." : "You come out ahead once the lift passes about " + (r.breakEven * 100).toFixed(1) + "%.";
+  }
+  ids.forEach(function (id) { el[id].addEventListener("input", render); });
+  document.getElementById("calc-form").addEventListener("submit", function (e) { e.preventDefault(); });
+  render();
+
+  // Free check requests go to Make (scenario 6862301), which drops an alert into hello@ with the Pricing label.
+  var HOOK = "https://hook.us2.make.com/9w8sb78rd6qgn3udy1t671rzxvl8119o";
+  var params = new URLSearchParams(location.search);
+  document.getElementById("free-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var form = e.target, msg = document.getElementById("free-msg"), btn = form.querySelector("button");
+    if (!form.reportValidity()) return;
+    var body = new URLSearchParams({
+      form: "free_check",
+      listing: document.getElementById("listing").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      avail: el.avail.value, booked: el.booked.value, revenue: el.revenue.value, lift: el.lift.value,
+      website: document.getElementById("website").value,
+      page: location.href, referrer: document.referrer,
+      utm_source: params.get("utm_source") || "", utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "", utm_content: params.get("utm_content") || "",
+      utm_term: params.get("utm_term") || "", fbclid: params.get("fbclid") || "", gclid: params.get("gclid") || ""
+    });
+    btn.disabled = true;
+    msg.textContent = "Sending...";
+    fetch(HOOK, { method: "POST", mode: "no-cors", body: body })
+      .then(function () { form.reset(); msg.textContent = "Thanks. We'll email your free check within two business days."; })
+      .catch(function () { msg.textContent = "That didn't send. Email your listing link to hello@shortstaypricing.com and we'll do your check."; })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
