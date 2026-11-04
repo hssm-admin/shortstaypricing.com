@@ -93,6 +93,10 @@ nav.top .btn { padding: 9px 18px; font-size: 0.92rem; }
 .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 .hero .terms { margin-top: 18px; font-size: 0.9rem; color: var(--muted); }
 .hero .terms span + span::before { content: "\00b7"; margin: 0 8px; color: var(--gold-ink); }
+.hero .terms span:last-child { white-space: nowrap; }
+.partner { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 0.9rem; color: var(--muted); }
+.partner-badge { display: inline-block; line-height: 0; }
+.partner-badge img { display: block; width: 150px; height: auto; border: none; }
 
 /* Rate calendar */
 .cal { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; box-shadow: 0 18px 40px -24px rgba(19,19,42,.35); }
@@ -258,7 +262,8 @@ footer .wrap { display: grid; gap: 8px; }
           <a class="btn primary" href="#check">Get your free RevPAR check</a>
           <a class="btn ghost" href="#how">How it works</a>
         </div>
-        <p class="terms"><span>5% of rental revenue plus GST</span><span>$99 minimum a listing a month</span><span>No lock-in</span></p>
+        <p class="terms"><span>5% of rental revenue plus GST, never less than $99 a listing a month</span><span>No lock-in</span></p>
+        <p class="partner"><a class="partner-badge" href="https://pricelabs-rmpartners.directoryup.com/pricelabs-rm-partners/short-stay-pricing?from=badge" title="Find me on PriceLabs RM Partners Directory" target="_blank" rel="noopener"><img src="https://pricelabs-rmpartners.directoryup.com/images/PriceLabs-PM-Partner-Badge.png" alt="PriceLabs Verified Revenue Management Partner" width="150" height="56"></a><span>You add us from your own PriceLabs account. No passwords change hands.</span></p>
       </div>
 
       <figure class="cal" aria-labelledby="cal-title" style="margin:0">
@@ -349,7 +354,7 @@ footer .wrap { display: grid; gap: 8px; }
       </div>
       <div class="panel">
         <ul class="ticks">
-          <li>Minimum $99 plus GST a listing a month</li>
+          <li>If 5% comes to less than $99 in a month, that listing's fee is $99 plus GST. For example, a listing that earns $4,000 in a month pays $200, and one that earns $1,500 pays $99 (both plus GST).</li>
           <li>No setup fee, no lock-in, 30 days' notice to stop</li>
           <li>The same rate for one listing or a hundred</li>
           <li>Billed monthly to the card you save at sign-up, after a statement showing every listing's nights, revenue and fee</li>
@@ -446,10 +451,10 @@ footer .wrap { display: grid; gap: 8px; }
       </div>
       <div class="faq narrow" style="max-width:820px">
         <details><summary>What do I need for the free check?</summary><p>Just your listing link and your email. We do the numbers and email you a one-page check within two business days. If you'd rather see your figures straight away, the calculator needs two numbers from your Airbnb earnings page.</p></details>
-        <details><summary>Do I need PriceLabs?</summary><p>Yes. We work inside your own PriceLabs account. If you're not on it yet, start their free 30-day trial and connect Airbnb or your booking software. We'll send you a short step-by-step guide, and if you'd like a hand, we'll walk you through it on a quick call. You do the clicks, so you never share a password with us.</p></details>
+        <details><summary>Do I need PriceLabs?</summary><p>Yes. We're a PriceLabs Verified RM Partner and work inside your own PriceLabs account. If you're not on it yet, start their free 30-day trial and connect Airbnb or your booking software. We'll send you a short step-by-step guide, and if you'd like a hand, we'll walk you through it on a quick call. You do the clicks, so you never share a password with us.</p></details>
         <details><summary>Will you touch my guests or bookings?</summary><p>No. We only manage your pricing. Your guests, bookings, payouts and listing stay with you.</p></details>
         <details><summary>Can I set a lowest price?</summary><p>Yes. You set a minimum nightly price for each listing and we never go below it. Change it any time by email.</p></details>
-        <details><summary>How do you charge?</summary><p>Once a month, in arrears. You get a statement showing each listing's nights, revenue and fee, then it's charged to the card you saved when you signed up.</p></details>
+        <details><summary>How do you charge?</summary><p>5% of each listing's rental revenue for the month, or $99 if that comes to less, plus GST. We charge once a month, in arrears. You get a statement showing each listing's nights, revenue and fee, then it's charged to the card you saved when you signed up.</p></details>
         <details><summary>What if I want to stop?</summary><p>Give us 30 days' notice by email. There's no exit fee. We remove our access and leave your settings as they are.</p></details>
         <details><summary>Do you guarantee results?</summary><p>No. Your market, your listing and your reviews all matter. What we commit to is the work: your pricing reviewed every week, adjusted as your market moves, and reported every month.</p></details>
         <details><summary>Where do you work?</summary><p>Anywhere in Australia, with more countries to come.</p></details>
