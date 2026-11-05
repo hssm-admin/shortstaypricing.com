@@ -187,7 +187,10 @@ table.sums tr.total td { border-bottom: none; font-size: 1.15rem; color: var(--g
 .free { display: grid; gap: 14px; }
 .free .field { margin-bottom: 0; }
 .easy .field label { color: var(--ink); font-weight: 600; font-size: 0.95rem; }
-.easy .field input[type="url"], .easy .field input[type="email"] { background: #fff; color: var(--ink); border: 1.5px solid #C5CEDD; padding: 12px 14px; }
+.easy .field input[type="url"], .easy .field input[type="email"], .easy .field input[type="text"], .easy .field input[type="tel"] { font: inherit; font-size: 1.05rem; border-radius: 8px; width: 100%; background: #fff; color: var(--ink); border: 1.5px solid #C5CEDD; padding: 12px 14px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.easy .field .opt { font-weight: 400; color: var(--muted); }
+.fieldnote { font-size: 0.9rem; color: var(--muted); margin-top: -4px; }
 .easy .field input::placeholder { color: #8A93A8; }
 .easy .btn { justify-self: start; }
 .formmsg { margin-top: 2px; font-size: 0.92rem; color: var(--gold-ink); min-height: 1.3em; font-weight: 600; }
@@ -219,6 +222,7 @@ footer .wrap { display: grid; gap: 8px; }
 
 @media (max-width: 900px) {
   .hero .wrap, .price, .calc, .split, .easy { grid-template-columns: 1fr; }
+  .row2 { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
   .proof .wrap { grid-template-columns: 1fr; gap: 14px; }
 }
@@ -387,6 +391,17 @@ footer .wrap { display: grid; gap: 8px; }
               <label for="email">Your email</label>
               <input type="email" id="email" placeholder="you@example.com" required>
             </div>
+            <div class="row2">
+              <div class="field">
+                <label for="fname">First name <span class="opt">(optional)</span></label>
+                <input type="text" id="fname" autocomplete="given-name" placeholder="Sam">
+              </div>
+              <div class="field">
+                <label for="mobile">Mobile <span class="opt">(optional)</span></label>
+                <input type="tel" id="mobile" autocomplete="tel" placeholder="04xx xxx xxx">
+              </div>
+            </div>
+            <p class="fieldnote">Add your mobile if you'd like a quick call to go through your check.</p>
             <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
             <button class="btn gold" type="submit">Send me my free check</button>
           </form>
@@ -546,6 +561,8 @@ function revparCheck(input) {
       form: "free_check",
       listing: document.getElementById("listing").value.trim(),
       email: document.getElementById("email").value.trim(),
+      fname: document.getElementById("fname").value.trim(),
+      mobile: document.getElementById("mobile").value.trim(),
       avail: calcUsed ? el.avail.value : "", booked: calcUsed ? el.booked.value : "", revenue: calcUsed ? el.revenue.value : "", lift: calcUsed ? el.lift.value : "",
       website: document.getElementById("website").value,
       page: location.href, referrer: document.referrer,
